@@ -104,6 +104,25 @@ export default class JSEncrypt {
         }
     }
 
+    //文件路径 src/JSEncrypt.ts，增加以下方法
+    // 分段加密长字符串
+    public encryptLong(str:string) {
+        try {
+            return hex2b64(this.getKey().encryptLong(str));
+        } catch (ex) {
+            return false;
+        }
+    }
+
+    // 分段解密长字符串
+    public decryptLong(str:string) {
+        try {
+            return this.getKey().decryptLong(b64tohex(str));
+        } catch (ex) {
+            return false;
+        }
+    }
+
     /**
      * Proxy method for RSAKey object's sign.
      * @param {string} str the string to sign
